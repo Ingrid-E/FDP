@@ -1,2 +1,2 @@
-# FDP
+# Listas
 Fundamentos de programación ejercicios.
