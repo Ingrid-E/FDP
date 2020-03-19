@@ -1,0 +1,27 @@
+{
+  "name": "fdp",
+  "version": "1.0.0",
+  "description": "Fundamentos de programación",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ingrid-E/FDP.git"
+  },
+  "keywords": [
+    "FDP",
+    "Univalle",
+    "Ejercicios"
+  ],
+  "author": "Ingrid Echeverri Montoya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ingrid-E/FDP/issues"
+  },
+  "homepage": "https://github.com/Ingrid-E/FDP#readme",
+  "dependencies": {
+    "functional-light": "^0.5.1"
+  }
+}
