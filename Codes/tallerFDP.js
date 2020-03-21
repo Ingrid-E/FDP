@@ -46,8 +46,8 @@ function family(name1,name2){
     else return name1.name[0]+ " " + name1.name[1] +" y "+name2.name[0]+" "+name2.name[1] +" "+" no son parientes."
 }
 
-const p1 =()
-const p2 =
+function 
+
 //nombres
 console.log(adult(jhonatan))
 console.log(older(fabian,ingrid))
