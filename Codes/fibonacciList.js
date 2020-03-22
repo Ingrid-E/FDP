@@ -1,41 +1,38 @@
-const {cons, first, rest, isEmpty, isList, length} = require('functional-light');
+const {cons, first, rest, isEmpty, isList, length} = require('./node_modules/functional-light');
 
-function fibolist(n){
-    if(n<2)return n;
+function fiboList(n) {
+    return fibonacciAux(n, 0, 1);
+  }
 
-    return fibolist(n-1)+fibolist(n-2)
-}
+function fibonacciAux(n, a, b) {
+    if (n == -1) return [];
+    return cons(a, (fibonacciAux(n - 1, b, a + b)));
+  }
+  
+  console.log(fiboList(0))
+  console.log(fiboList(1))
+  console.log(fiboList(2))
+  console.log(fiboList(3))
+  console.log(fiboList(6))
 
-function fibolist2(n){
-    if(n==1) return 1;
-    return cons(fibolist(n-1),[fibolist(n)])
-    
-}
-
-console.log(fibolist2(4));
-console.log(fibolist2(2));
-console.log(fibolist2(8));
 
 /*
-(4)
-(4-1) + (4-2)
-(3)
-(3-1) + (3-2)return 1
-(2)
-(2-1) + (2-2)return 0
-(1)return 1
-
-(4-2)
-(2)
-(2-1) + (2-2) return 0 
-(1) return 1 
-
-1+1 +1 
-
-
-
-    
-
-
-
+fiboList(3)--->[0,1,1,2]
+fibonacciAux(3,0,1)
+(3==-1)? no
+cons(0,wait)--->(0,[1,1,2])
+  fibonacciAux(2,1,1)
+  (2==-1)? no
+  cons(1,wait)--->(1,[1,2])
+    fibonacciAux(1,1,2)
+    (1==-1)? no
+    cons(1,wait)--->(1,[2])
+        fibonacciAux(0,2,3)
+        (0==-1)? no
+        cons(2,wait)---> (2,[])
+            fibonacciAux(-1,3,5)
+            (-1==-1) return []
 */
+
+
+

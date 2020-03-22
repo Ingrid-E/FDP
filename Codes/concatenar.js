@@ -1,6 +1,6 @@
 //Ingrid Echeverri ingrid.echeverri@correounivalle.edu.co
 
-const {cons, first, rest, isEmpty, isList, length} = require('functional-light');
+const {cons, first, rest, isEmpty, isList, length} = require('./node_modules/functional-light');
 
 /**
  * 
