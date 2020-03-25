@@ -1,21 +1,31 @@
 //Ingrid Echeverri ingrid.echeverri@correounivalle.edu.co
 const { cons, first, rest, isEmpty, isList, length } = require('functional-light');
 
+/*
+function delet(list,number,acc=[],c=0){
+    if(!list.includes(number)) return list;
+    if(first(list)==number)return concat(invertir(acc),rest(list))
+    else return delet(rest(list),number,cons(first(list),acc,c+1))
+}
+*/
 /**
- * Inserts a number in a list in order
+ * Deletes a desire number from a list
  * @param {Array} list 
- * @param {*} a 
+ * @param {*} number 
  * @param {[]} acc 
+ * @param {0} c 
  * @returns {Array}
- * @example insertInOrder([1,2,3,5],4)//=> [1,2,3,4,5]
+ * @example delet([1,2,3],2)//=> [1,3]
  */
 
-function insertInOrder(list, a, acc = []) {
-    if (isEmpty(list)) return cons(a, list)
-    if (first(list) > a) return concat(invertir(acc), cons(a, list))
-    if (a> list[length(list)-1]) return concat(list,cons(a,[]))
-    else return insertInOrder(rest(list), a, cons(first(list), acc))
+function delet(list,number,acc=[],c=number-1){
+    if(number>length(list))return list
+    if(c < -1) return list
+    if(c==-1) return rest(list)
+    if(number==0) return concat(invertir(acc),rest(list))
+    else return delet(rest(list),number-1,cons(first(list),acc),c=number)
 }
+
 
 /**
  * Concatenate 2 lists 
@@ -43,10 +53,9 @@ function invertir(list, acc = []) {
     return invertir(rest(list), cons(first(list), acc))
 }
 
-console.log(insertInOrder([], -2.3))
-console.log(insertInOrder([-2, 3, 5, 5, 6], 4))
-console.log(insertInOrder([-2, 3, 5, 5, 6], 3))
-console.log(insertInOrder([-2, 3, 5, 5, 6], 8))
-console.log(insertInOrder([-2, 3, 5, 5, 6], -3))
-console.log(insertInOrder([-2, 3, 5, 5, 6], -2))
-console.log(insertInOrder([-2, 3, 5, 5, 6], 5.2))
+console.log(delet([1,2,3], 7))
+console.log(delet([1,2,3], 1))
+console.log(delet([1,0,3,5,9,3], 5))
+console.log(delet([1,0,3,5,9,3], 0))
+console.log(delet([], 0))
+console.log(delet([2, 4], -1))
