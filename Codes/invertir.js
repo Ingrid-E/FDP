@@ -1,5 +1,5 @@
 //Ingrid Echeverri ingrid.echeverri@correounivalle.edu.co
-const {cons, first, rest, isEmpty, isList, length} = require('functional-light');
+const { cons, first, rest, isEmpty, isList, length } = require('functional-light');
 
 
 /**
@@ -9,14 +9,17 @@ const {cons, first, rest, isEmpty, isList, length} = require('functional-light')
  * @example invertir([1,2,3], []) //=> [3,2,1]
  */
 
-function invertir(list, acc=[]){
-    if(isEmpty(list)) return acc;
-    return invertir(rest(list),cons(first(list),acc))
+function invertir(list) {
+    const invertirLocal = function (list, acc) {
+        if (isEmpty(list)) return acc;
+        return invertirLocal(rest(list), cons(first(list), acc));
+    }
+    return invertirLocal(list, []);
 }
 
 /*
 
-invertir([1,2,3])
+invertirLocal([1,2,3])
 isEmpty? no
     invertir([2,3],[1])
     isEmpty? no
@@ -27,7 +30,7 @@ isEmpty? no
 */
 
 
-console.log(invertir([]))
-console.log(invertir([1]))
-console.log(invertir([4,1,2,7,4,1]))
-console.log(invertir([1,2,1]))
+console.log(invertir([]));
+console.log(invertir([1]));
+console.log(invertir([4, 1, 2, 7, 4, 1]));
+console.log(invertir([1, 2, 1]));

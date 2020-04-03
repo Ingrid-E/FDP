@@ -1,38 +1,27 @@
 //Ingrid Echeverri ingrid.echeverri@correounivalle.edu.co
-const {cons, first, rest, isEmpty, isList, length} = require('functional-light');
+const { cons, first, rest, isEmpty, isList, length } = require('functional-light');
+
 
 /**
- * Returns the list of fibonacci numbers. 
+ * Returns the list of the first n numers in the Fibonacci serie.
  * @param {*} n 
  * @returns {Array}
- * @example fiboList(8)//=>[0, 1,  1,  2, 3, 5, 8, 13, 21]
- * @example fiboList(3)//=> [ 0, 1, 1, 2 ]
+ * @example fibolist(3)//=>[0,1,1] 
  */
 
 function fiboList(n) {
-    return fibonacciAux(n, 0, 1);
+  const fibonacciLocal = function (n, a, b) {
+    if (n == 0) return [];
+    else return cons(a, (fibonacciLocal(n - 1, b, a + b)));
   }
+  return fibonacciLocal(n, 0, 1);
+}
 
-/**
- * 
- * @param {*} n 
- * @param {*} a 
- * @param {*} b 
- * @returns {Array}
- * @example fibonacciAux(8, 0, 1)//=>[0, 1,  1,  2, 3, 5, 8, 13, 21]
- * @example fibonacciAux(3, 0, 1)//=>[ 0, 1, 1, 2 ]
- */
-
-function fibonacci(n, a=0, b=1) {
-    if (n==0) return [];
-    return cons(a, (fibonacci(n - 1, b, a + b)));
-  }
-  
-  console.log(fibonacci(8,0,1))
-  console.log(fiboList(1))
-  console.log(fiboList(2))
-  console.log(fiboList(3))
-  console.log(fiboList(6))
+console.log(fiboList(8));
+console.log(fiboList(1));
+console.log(fiboList(2));
+console.log(fiboList(3));
+console.log(fiboList(6));
 
 /*
 fiboList(3)--->[0,1,1,2]

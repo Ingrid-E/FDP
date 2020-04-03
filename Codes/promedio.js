@@ -1,31 +1,25 @@
+//Ingrid Echeverri ingrid.echeverri@correunivalle.edu.co
 const { cons, first, rest, isEmpty, isList, length } = require('functional-light');
 
-//Ingrid Echeverri ingrid.echeverri@correunivalle.edu.co
 
-/**
- * Retorna la suma de una lista de numeros 
- * Buscar el numero mayor en una lista
- * @param {Array} list
- * @returns {*}
- * @example sum([1,2,3]) // => 6
- */
-
-function sum(list) {
-
-    if (isEmpty(list)) return null
-    else
-        return (first(list) + sum(rest(list)))
-}
-
-/**
+/** Finds the average number in a list.
  * @param {Array} list
  * @return {*}
  * @example promedio([1,2,3]) // =>2
  */
 
 function promedio(list) {
-    if (isEmpty(list)) return null
-    return sum(list) / length(list)
+    if (isEmpty(list)) return null;
+    /**
+     * Returns the sum of a number list. 
+     * @param {*} list 
+     * @returns sum([1,2,3])//=> 6
+     */
+    const sum = function (list) {
+        if (isEmpty(list)) return null;
+        else return (first(list) + sum(rest(list)));
+    }
+    return sum(list) / length(list);
 }
 
 console.log(promedio([]));

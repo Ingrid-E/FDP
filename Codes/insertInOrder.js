@@ -10,37 +10,46 @@ const { cons, first, rest, isEmpty, isList, length } = require('functional-light
  * @example insertInOrder([1,2,3,5],4)//=> [1,2,3,4,5]
  */
 
-function insertInOrder(list, a, acc = []) {
-    if (isEmpty(list)) return cons(a, list)
-    if (first(list) > a) return concat(invertir(acc), cons(a, list))
-    if (a> list[length(list)-1]) return concat(list,cons(a,[]))
-    else return insertInOrder(rest(list), a, cons(first(list), acc))
-}
+function insertInOrder(list, a) {
+    /**
+    * Returns the last number in a list.
+    * @param {Array} list1 
+    * @returns {*}
+    */
+    const last = function (list1) {
+        if (length(list1) == 1) return first(list1);
+        else return last(rest(list1));
+    }
+    /**
+   * Concatenate 2 lists together.
+   * @param {Array} list1 
+   * @param {Array} list2 
+   * @returns {Array}
+   * @example concat([1,2],[5,6]) // => [1,2,5,6]
+   */
+    const concat = function (list, list2) {
+        if (isEmpty(list)) return list2;
+        return cons(first(list), concat(rest(list), list2));
+    }
+    /**
+    * Returns the list backwards 
+    * @param {Array} list 
+    * @param {[]} acc 
+    * @example invertir([1,2,3], []) //=> [3,2,1]
+     */
+    const invertir = function (list, acc = []) {
+        if (isEmpty(list)) return acc;
+        return invertir(rest(list), cons(first(list), acc));
+    }
+    
+    const insertInOrderLocal = function (list, a, acc) {
 
-/**
- * Concatenate 2 lists 
- * @param {Array} list1 
- * @param {Array} list2 
- * @returns {Array}
- * @example concat([1,2],[5,6]) // => [1,2,5,6]
- * @example concat(['hola', 4],[]) // => ['hola', 4]
- */
-
-function concat(list1, list2) {
-    if (isEmpty(list1)) return list2;
-    return cons(first(list1), concat(rest(list1), list2));
-}
-
-/**
- * Returns the list backwards 
- * @param {Array} list 
- * @param {[]} acc 
- * @example invertir([1,2,3], []) //=> [3,2,1]
- */
-
-function invertir(list, acc = []) {
-    if (isEmpty(list)) return acc;
-    return invertir(rest(list), cons(first(list), acc))
+        if (isEmpty(list)) return cons(a, list);
+        if (first(list) > a) return concat(invertir(acc), cons(a, list));
+        if (a > last(list)) return concat(list, cons(a, []));
+        else return insertInOrderLocal(rest(list), a, cons(first(list), acc));
+    }
+    return insertInOrderLocal(list, a, []);
 }
 
 console.log(insertInOrder([], -2.3))
