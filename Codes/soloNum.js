@@ -12,8 +12,20 @@ const { cons, first, rest, isEmpty, isList, length } = require('functional-light
 
 
 function soloNum(list) {
+    /**
+    * Returns the list backwards 
+    * @param {Array} list 
+    * @param {[]} acc 
+    * @example invertir([1,2,3], []) //=> [3,2,1]
+     */
+
+    const invertir = function (list, acc = []) {
+        if (isEmpty(list)) return acc;
+        return invertir(rest(list), cons(first(list), acc));
+    }
+
     const soloNumLocal = function (list, acc) {
-        if (isEmpty(list)) return acc.reverse();
+        if (isEmpty(list)) return invertir(acc);
         if (first(list) === true || first(list) === false) return soloNumLocal(rest(list), acc);
         if (first(list) <= 0 || first(list) > 0) return soloNumLocal(rest(list), cons(first(list), acc));
         else return soloNumLocal(rest(list), acc);
