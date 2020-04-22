@@ -1,6 +1,6 @@
-const { cons, first, rest, isEmpty, isList, length } = require('functional-light');
+const { cons, first, rest, isEmpty, isList, length,append } = require('functional-light');
 
-let a = ["arroz", "sol", "beso", "oso", "aba","luna", "bus"];
+let a = [5, 2, 7, 6, 1, 3];
 const arbol = crearArbol(a);
 console.log(crearArbol(a));
 
@@ -54,4 +54,29 @@ function forEach(l, f) {
         forEach(rest(l), f)
     }
 }
+/*{
+    value: 5,
+    left: { value: 2, left: { value: 1 }, right: { value: 3 } },
+    right: { value: 7, left: { value: 6 } }
+  }
 
+ inorden [1,2,3,5,6,7]
+*/
+const tree = {value: 5, left: { value: 2, left: { value: 1 }, right: { value: 3 } },right: { value: 7, left: { value: 6 } }}
+const arboles = {value: 5, left: { value: 2, left: { value: 1 }, right: { value: 3 } },right: { value: 7, left: { value: 6 } }}
+
+function inorder(object,n){
+    if(!object) return null;
+    if(object.left<n && object.right == n) return [object.value];
+    if(!object.left) return append(object.value,inorder(arboles,object.value))
+    if(object.left.value == n){
+        if(!object.left.right) return append(object.value,inorder(arbol,object.value)) 
+        else return inorder(object.left.right,n)
+    }
+    if(object.left.value<n) return inorder(object.right,n)
+    else return inorder(object.left,n);
+
+}
+
+
+console.log(inorder(tree,0))

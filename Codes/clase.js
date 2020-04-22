@@ -55,7 +55,7 @@ function map(list, x) {
 }
 
 console.log(map([1, 2, 3, 4], (x) => x * x));// [1, 4, 9, 16]
-console.log(map([{a: 'María'}, {a: 'Carlos'}], (v) => 'Hola' + v.a));//[“Hola María”, “Hola Carlos”]
+console.log(map([{a: 'María'}, {a: 'Carlos'}], (v) => 'Hola ' + v.a));//[“Hola María”, “Hola Carlos”]
 //console.log(map([1, 2, 3, 4], (x) => Math.pow(x,3)));// [1, 4, 9, 16]
 
 /*
@@ -82,7 +82,7 @@ console.log(reduce([1, 2, 3, 4, 5], (val, acum) => acum + val,0));
 console.log(reduce([1, 2, 3, 4, 5], (val, acum) => acum * val,1));
 console.log(reduce([1, 7, 3, 14, 5], (val, acum) => Math.max(val, acum), 0));
 console.log(reduce([1, 7, 3, 14, 5], (val, acum) => Math.min(val, acum), 9999));
-console.log(reduce([{a: 'María'}, {a: 'Carlos'}], (val, acum) => acum + '-' +val.a, ''));
-console.log(reduce([{a: 'Carlos'}, {a: 'Maria'}], (val, acum) => acum + '-' +val.a, ''));
+console.log(reduce([{a: 'Carlos'}, {a: 'María'}], (val, acum) => acum + '-' +val.a, '')); // => “-María-Carlos”
 
 
+console.log(first([{a: 'Maria'}]))
